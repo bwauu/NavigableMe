@@ -6,18 +6,18 @@
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item android:id="@+id/search_icon"
-        android:title="Home"
+        android:title="Search"
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item android:id="@+id/map_icon"
-        android:title="Home"
+        android:title="Map"
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item android:id="@+id/park_icon"
-        android:title="Home"
+        android:title="Park"
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item android:id="@+id/settings_icon"
-        android:title="Home"
+        android:title="Settings"
         android:icon="@drawable/ic_baseline_home_24"/>
 </menu>
