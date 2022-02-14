@@ -7,17 +7,17 @@
 
     <item android:id="@+id/search_icon"
         android:title="Search"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_baseline_search_24"/>
 
     <item android:id="@+id/map_icon"
         android:title="Map"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_baseline_map_24"/>
 
     <item android:id="@+id/park_icon"
         android:title="Park"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_baseline_local_parking_24"/>
 
     <item android:id="@+id/settings_icon"
         android:title="Settings"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_baseline_settings_24"/>
 </menu>
