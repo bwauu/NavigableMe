@@ -75,10 +75,10 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemClickL
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+        // get user's clicked item from ui list view
         String selectedItem = (String) adapterView.getItemAtPosition(i);
+        // set text to clicked item
         textUpdate.setText(selectedItem);
-        Log.i("SearchFragment",selectedItem);
         // Create new fragment and transaction
         MapFragment mapFragment = new MapFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

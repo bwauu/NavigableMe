@@ -19,8 +19,7 @@
     <ListView
         android:id="@+id/store_list_items"
         android:layout_width="400dp"
-        android:layout_height="457dp"
-        android:layout_marginTop="2dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"

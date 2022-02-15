@@ -24,6 +24,16 @@ public class HomeFragment extends Fragment {
         ad1 = view.findViewById(R.id.clickable_mcdonalds_img);
         ad2 = view.findViewById(R.id.clickable_levis_img);
         ad3 = view.findViewById(R.id.clickable_filmstaden_img);
+        // TODO: Implement clickable ImageViews
+        // ad1.setClickable(true);
+        /*
+        ad1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        */
 
         return view;
     }
