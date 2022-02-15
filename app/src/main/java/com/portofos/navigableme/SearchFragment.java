@@ -23,7 +23,6 @@ import android.widget.TextView;
 
 public class SearchFragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    private Button findBtn;
     private TextView textUpdate;
     private SearchView searchView;
     private ListView listViewStores;
