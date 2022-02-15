@@ -1,15 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".HomeFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Home Fragment"
-        android:textSize="25dp" />
+        <ImageView
+            android:id="@+id/taby_centrum_hero_img"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/taby_centrum_hero_img"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:text="Välkommen till Täby Centrum"
+            app:layout_constraintTop_toTopOf="@+id/taby_centrum_hero_img"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/clickable_mcdonalds_img"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/mcdonalds_img"
+            app:layout_constraintTop_toBottomOf="@+id/taby_centrum_hero_img" />
+
+        <ImageView
+            android:clickable="true"
+            android:focusable="true"
+
+            android:id="@+id/clickable_levis_img"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/levis_img"
+            app:layout_constraintTop_toBottomOf="@+id/clickable_mcdonalds_img" />
+
+        <ImageView
+            android:clickable="true"
+            android:focusable="true"
+
+            android:id="@+id/clickable_filmstaden_img"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/filmstaden_img"
+            app:layout_constraintTop_toBottomOf="@+id/clickable_levis_img" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
