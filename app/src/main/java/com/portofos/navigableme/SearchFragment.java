@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 
 public class SearchFragment extends Fragment implements AdapterView.OnItemClickListener {
-
+    // TODO:Delete all unused components
     private TextView textUpdate;
     private SearchView searchView;
     private ListView listViewStores;
