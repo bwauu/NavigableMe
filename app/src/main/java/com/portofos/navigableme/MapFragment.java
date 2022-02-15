@@ -16,7 +16,7 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_map, container, false);
 
-        // TODO: Implement google maps sdk api
+        // TODO: Implement desired functionality like markers and so
 
     }
 }
