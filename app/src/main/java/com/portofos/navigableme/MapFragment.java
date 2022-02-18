@@ -22,9 +22,7 @@ public class MapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // TODO: HÅRDKODA application basic
-        // TODO: REST-API learning?
-        // TODO: DATAPORTALEN?
+        // https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/ implemention test before savepoint
         // Initialize view
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
