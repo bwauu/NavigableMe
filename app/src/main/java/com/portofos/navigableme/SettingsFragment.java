@@ -21,6 +21,7 @@ public class SettingsFragment extends Fragment {
     private Button enterBtn;
     private Button leaveBtn;
 
+    // TODO: Import Random class
 
 
     @Override

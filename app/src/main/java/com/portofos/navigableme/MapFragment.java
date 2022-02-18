@@ -22,7 +22,9 @@ public class MapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // TODO: REST-API learning
+        // TODO: HÅRDKODA application basic
+        // TODO: REST-API learning?
+        // TODO: DATAPORTALEN?
         // Initialize view
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
