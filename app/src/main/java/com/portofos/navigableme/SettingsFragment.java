@@ -102,7 +102,7 @@ public class SettingsFragment extends Fragment {
                     mShowCount.setText(Integer.toString(customersInStoreCounter));
                     mPrompt.setText("There are " + Integer.toString(availableEntries) + " entries available.");
 
-                    if (customersInStoreCounter >= mCap * 0.5) {
+                    if (customersInStoreCounter > mCap * 0.5) {
                         mPrompt.setTextColor(Color.parseColor("#F6BE00"));
                         mPrompt.setText("Hurry! Store is almost full!");
                     }
