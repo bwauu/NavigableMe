@@ -10,13 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
 
 public class SettingsFragment extends Fragment {
 
     private TextView mShowCount;
     private TextView mPrompt;
-    private int mCount = 0;
-    private int mCap = 10;
+    private TextView mallCap;
+    private int mCount;
+    private int mCap;
     private int availableEntries;
     private Button enterBtn;
     private Button leaveBtn;
@@ -32,9 +35,18 @@ public class SettingsFragment extends Fragment {
         leaveBtn = (Button) view.findViewById(R.id.button_leave);
 
 
+
+        mallCap = (TextView) view.findViewById(R.id.textview_cap);
         mShowCount = (TextView) view.findViewById(R.id.show_count);
         mPrompt = (TextView) view.findViewById(R.id.textview_prompter);
 
+        mCap = getRandomInteger(1,100);
+        mCount = getRandomInteger(getRandomInteger(1,mCap), mCap);
+        mShowCount.setText(String.valueOf(mCount));
+
+        mPrompt.setText("Det finns " + Integer.toString(mCap-mCount) + " platser tillgängliga");
+
+        mallCap.setText("Total people allowed in store " + String.valueOf(mCap));
         enterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +54,7 @@ public class SettingsFragment extends Fragment {
 
                 availableEntries = mCap - mCount;
                 if (mCount >= mCap ) {
-                    if(mCount == 10) {
+                    if(mCount == mCap) {
                         mShowCount.setText(Integer.toString(mCount));
                     }
                     mPrompt.setText("Gallerian är full. Vänligen vänta");
@@ -79,6 +91,16 @@ public class SettingsFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public int getRandomInteger(int min, int max) {
+
+        Random rand;
+        rand = new Random();
+
+        int result  = rand.nextInt(max - min + 1) + min;
+
+        return result;
     }
 
 }
