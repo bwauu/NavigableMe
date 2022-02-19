@@ -42,7 +42,7 @@ public class SettingsFragment extends Fragment {
         mShowCount = (TextView) view.findViewById(R.id.show_count);
         mPrompt = (TextView) view.findViewById(R.id.textview_prompter);
 
-        mCap = getRandomInteger(1,100);
+        mCap = 10;
         customersInStoreCounter = getRandomInteger(getRandomInteger(1,mCap), mCap);
         mShowCount.setText(String.valueOf(customersInStoreCounter));
 
@@ -100,9 +100,9 @@ public class SettingsFragment extends Fragment {
                 else {
                     mPrompt.setTextColor(Color.parseColor("#00FF00"));
                     mShowCount.setText(Integer.toString(customersInStoreCounter));
-                    mPrompt.setText("There are " + Integer.toString(availableEntries-1) + " entries available.");
+                    mPrompt.setText("There are " + Integer.toString(availableEntries) + " entries available.");
 
-                    if (customersInStoreCounter > mCap * 0.5) {
+                    if (customersInStoreCounter >= mCap * 0.5) {
                         mPrompt.setTextColor(Color.parseColor("#F6BE00"));
                         mPrompt.setText("Hurry! Store is almost full!");
                     }
