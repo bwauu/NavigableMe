@@ -64,7 +64,7 @@ public class SettingsFragment extends Fragment {
                         mShowCount.setText(Integer.toString(customersInStoreCounter));
                     }
 
-                    mPrompt.setText("Gallerian är full. \nVänligen vänta.");
+                    mPrompt.setText("Gallerian är full. Vänligen vänta.");
                     mPrompt.setTextColor(Color.parseColor("#FF0000"));
                     customersInStoreCounter = mCap;
                 }
@@ -72,12 +72,14 @@ public class SettingsFragment extends Fragment {
 
                     mPrompt.setTextColor(Color.parseColor("#00FF00"));
                     mShowCount.setText(Integer.toString(customersInStoreCounter));
-                    mPrompt.setText("Det finns " + Integer.toString(availableEntries) + " platser tillgängliga");
+                    mPrompt.setText("There are " + Integer.toString(availableEntries) + " entries available.");
 
-                    // If customers in store is more than or equal to 50% of total capacity then
+                    // If customers in store is more than  to 50% of total capacity then
                     // display prompt text as Dark Yellow (medium traffic)
-                    if (customersInStoreCounter >= mCap * 0.5) {
+                    if (customersInStoreCounter > mCap * 0.5) {
+                        double percentage = customersInStoreCounter / mCap;
                         mPrompt.setTextColor(Color.parseColor("#F6BE00"));
+                        mPrompt.setText("Hurry! Store is almost full!");
                     }
                 }
 
@@ -92,16 +94,21 @@ public class SettingsFragment extends Fragment {
 
                 if (customersInStoreCounter < 0) {
                     customersInStoreCounter = 0;
-                    mPrompt.setText("Det finns " + Integer.toString(availableEntries-1) + " platser tillgängliga");
+                    mPrompt.setText("There are " + Integer.toString(availableEntries-1) + " entries available.");
                 }
 
                 else {
+                    mPrompt.setTextColor(Color.parseColor("#00FF00"));
                     mShowCount.setText(Integer.toString(customersInStoreCounter));
-                    mPrompt.setText("Det finns " + Integer.toString(availableEntries) + " platser tillgängliga");
+                    mPrompt.setText("There are " + Integer.toString(availableEntries-1) + " entries available.");
+
+                    if (customersInStoreCounter > mCap * 0.5) {
+                        mPrompt.setTextColor(Color.parseColor("#F6BE00"));
+                        mPrompt.setText("Hurry! Store is almost full!");
+                    }
                 }
 
 
-                mPrompt.setTextColor(Color.parseColor("#00FF00"));
             }
         });
 
