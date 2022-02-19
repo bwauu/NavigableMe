@@ -1,7 +1,9 @@
 package com.portofos.navigableme;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,7 +20,7 @@ public class SettingsFragment extends Fragment {
     private TextView mShowCount;
     private TextView mPrompt;
     private TextView mallCap;
-    private int mCount;
+    private int customersInStoreCounter;
     private int mCap;
     private int availableEntries;
     private Button enterBtn;
@@ -41,29 +43,42 @@ public class SettingsFragment extends Fragment {
         mPrompt = (TextView) view.findViewById(R.id.textview_prompter);
 
         mCap = getRandomInteger(1,100);
-        mCount = getRandomInteger(getRandomInteger(1,mCap), mCap);
-        mShowCount.setText(String.valueOf(mCount));
+        customersInStoreCounter = getRandomInteger(getRandomInteger(1,mCap), mCap);
+        mShowCount.setText(String.valueOf(customersInStoreCounter));
 
-        mPrompt.setText("Det finns " + Integer.toString(mCap-mCount) + " platser tillgängliga");
+        mPrompt.setText("Det finns " + Integer.toString(mCap- customersInStoreCounter) + " platser tillgängliga");
 
         mallCap.setText("Total people allowed in store " + String.valueOf(mCap));
         enterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCount++;
 
-                availableEntries = mCap - mCount;
-                if (mCount >= mCap ) {
-                    if(mCount == mCap) {
-                        mShowCount.setText(Integer.toString(mCount));
+                // DESIRED FUNCTIONALITY. For each enter (incrementation of mCount) change
+                // to more yellow green mid green than yellow. when mCount reach mCap
+                // color of mPrompt should be red.
+                customersInStoreCounter++;
+
+                availableEntries = mCap - customersInStoreCounter;
+                if (customersInStoreCounter >= mCap ) {
+                    if(customersInStoreCounter == mCap) {
+                        mShowCount.setText(Integer.toString(customersInStoreCounter));
                     }
-                    mPrompt.setText("Gallerian är full. Vänligen vänta");
-                    mCount = mCap;
+
+                    mPrompt.setText("Gallerian är full. \nVänligen vänta.");
+                    mPrompt.setTextColor(Color.parseColor("#FF0000"));
+                    customersInStoreCounter = mCap;
                 }
                 else  {
 
-                    mShowCount.setText(Integer.toString(mCount));
+                    mPrompt.setTextColor(Color.parseColor("#00FF00"));
+                    mShowCount.setText(Integer.toString(customersInStoreCounter));
                     mPrompt.setText("Det finns " + Integer.toString(availableEntries) + " platser tillgängliga");
+
+                    // If customers in store is more than or equal to 50% of total capacity then
+                    // display prompt text as Dark Yellow (medium traffic)
+                    if (customersInStoreCounter >= mCap * 0.5) {
+                        mPrompt.setTextColor(Color.parseColor("#F6BE00"));
+                    }
                 }
 
             }
@@ -72,25 +87,31 @@ public class SettingsFragment extends Fragment {
         leaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                --mCount;
-                availableEntries = mCap - mCount;
+                --customersInStoreCounter;
+                availableEntries = mCap - customersInStoreCounter;
 
-                if (mCount < 0) {
-                    mCount = 0;
+                if (customersInStoreCounter < 0) {
+                    customersInStoreCounter = 0;
                     mPrompt.setText("Det finns " + Integer.toString(availableEntries-1) + " platser tillgängliga");
                 }
 
                 else {
-                    mShowCount.setText(Integer.toString(mCount));
+                    mShowCount.setText(Integer.toString(customersInStoreCounter));
                     mPrompt.setText("Det finns " + Integer.toString(availableEntries) + " platser tillgängliga");
                 }
 
 
-
+                mPrompt.setTextColor(Color.parseColor("#00FF00"));
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
     }
 
     public int getRandomInteger(int min, int max) {
