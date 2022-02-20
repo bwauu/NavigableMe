@@ -17,7 +17,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapFragment extends Fragment {
-    // Rollback if windows push destroys
+
+    // TODO: Implement onQueryListner to search for stockholm for example and get pinpoint to stockholm
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

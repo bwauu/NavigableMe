@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -28,7 +29,7 @@ public class SettingsFragment extends Fragment {
 
     private String[] hexColors = {"#00FF00","#F6BE00","#FF0000"};
 
-
+    // TODO: Implement onSaveState. Save availbable enteries.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
@@ -58,18 +59,17 @@ public class SettingsFragment extends Fragment {
         });
 
         if(savedInstanceState != null) {
-            customersInStoreCounter =savedInstanceState.getInt("String key");
+            customersInStoreCounter = savedInstanceState.getInt("count");
+            mShowCount.setText(customersInStoreCounter);
 
         }
 
         return view;
     }
-
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("String key", customersInStoreCounter);
-        mShowCount.setText(Integer.toString(customersInStoreCounter));
+        outState.putInt("count", customersInStoreCounter);
     }
 
     private int getRandomInteger(int min, int max) {
@@ -134,6 +134,8 @@ public class SettingsFragment extends Fragment {
             }
         }
     }
+
+
     private void initializeAllFragmentVariables(View view) {
         enterBtn = (Button) view.findViewById(R.id.button_enter);
         leaveBtn = (Button) view.findViewById(R.id.button_leave);
