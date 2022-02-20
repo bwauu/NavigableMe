@@ -53,35 +53,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                // DESIRED FUNCTIONALITY. For each enter (incrementation of mCount) change
-                // to more yellow green mid green than yellow. when mCount reach mCap
-                // color of mPrompt should be red.
-                customersInStoreCounter++;
-
-                availableEntries = mCap - customersInStoreCounter;
-                if (customersInStoreCounter >= mCap ) {
-                    if(customersInStoreCounter == mCap) {
-                        mShowCount.setText(Integer.toString(customersInStoreCounter));
-                    }
-
-                    mPrompt.setText("Gallerian är full. Vänligen vänta.");
-                    mPrompt.setTextColor(Color.parseColor("#FF0000"));
-                    customersInStoreCounter = mCap;
-                }
-                else  {
-
-                    mPrompt.setTextColor(Color.parseColor("#00FF00"));
-                    mShowCount.setText(Integer.toString(customersInStoreCounter));
-                    mPrompt.setText("There are " + Integer.toString(availableEntries) + " entries available.");
-
-                    // If customers in store is more than  to 50% of total capacity then
-                    // display prompt text as Dark Yellow (medium traffic)
-                    if (customersInStoreCounter > mCap * 0.5) {
-                        double percentage = customersInStoreCounter / mCap;
-                        mPrompt.setTextColor(Color.parseColor("#F6BE00"));
-                        mPrompt.setText("Hurry! Store is almost full!");
-                    }
-                }
+                incrementClickLogia();
 
             }
         });
@@ -89,28 +61,16 @@ public class SettingsFragment extends Fragment {
         leaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                --customersInStoreCounter;
-                availableEntries = mCap - customersInStoreCounter;
 
-                if (customersInStoreCounter < 0) {
-                    customersInStoreCounter = 0;
-                    mPrompt.setText("There are " + Integer.toString(availableEntries-1) + " entries available.");
-                }
-
-                else {
-                    mPrompt.setTextColor(Color.parseColor("#00FF00"));
-                    mShowCount.setText(Integer.toString(customersInStoreCounter));
-                    mPrompt.setText("There are " + Integer.toString(availableEntries) + " entries available.");
-
-                    if (customersInStoreCounter > mCap * 0.5) {
-                        mPrompt.setTextColor(Color.parseColor("#F6BE00"));
-                        mPrompt.setText("Hurry! Store is almost full!");
-                    }
-                }
-
+                decrementClickLogia();
 
             }
         });
+
+        if(savedInstanceState != null) {
+            customersInStoreCounter =savedInstanceState.getInt("String key");
+
+        }
 
         return view;
     }
@@ -118,10 +78,11 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-
+        outState.putInt("String key", customersInStoreCounter);
+        mShowCount.setText(Integer.toString(customersInStoreCounter));
     }
 
-    public int getRandomInteger(int min, int max) {
+    private int getRandomInteger(int min, int max) {
 
         Random rand;
         rand = new Random();
@@ -129,6 +90,60 @@ public class SettingsFragment extends Fragment {
         int result  = rand.nextInt(max - min + 1) + min;
 
         return result;
+    }
+
+    private void incrementClickLogia(){
+        // DESIRED FUNCTIONALITY. For each enter (incrementation of mCount) change
+        // to more yellow green mid green than yellow. when mCount reach mCap
+        // color of mPrompt should be red.
+        customersInStoreCounter++;
+
+        availableEntries = mCap - customersInStoreCounter;
+        if (customersInStoreCounter >= mCap ) {
+            if(customersInStoreCounter == mCap) {
+                mShowCount.setText(Integer.toString(customersInStoreCounter));
+            }
+
+            mPrompt.setText("Gallerian är full. Vänligen vänta.");
+            mPrompt.setTextColor(Color.parseColor("#FF0000"));
+            customersInStoreCounter = mCap;
+        }
+        else  {
+
+            mPrompt.setTextColor(Color.parseColor("#00FF00"));
+            mShowCount.setText(Integer.toString(customersInStoreCounter));
+            mPrompt.setText("There are " + Integer.toString(availableEntries) + " entries available.");
+
+            // If customers in store is more than  to 50% of total capacity then
+            // display prompt text as Dark Yellow (medium traffic)
+            if (customersInStoreCounter > mCap * 0.5) {
+                double percentage = customersInStoreCounter / mCap;
+                mPrompt.setTextColor(Color.parseColor("#F6BE00"));
+                mPrompt.setText("Hurry! Store is almost full!");
+            }
+        }
+
+    }
+
+    private void decrementClickLogia() {
+        --customersInStoreCounter;
+        availableEntries = mCap - customersInStoreCounter;
+
+        if (customersInStoreCounter < 0) {
+            customersInStoreCounter = 0;
+            mPrompt.setText("There are " + Integer.toString(availableEntries-1) + " entries available.");
+        }
+
+        else {
+            mPrompt.setTextColor(Color.parseColor("#00FF00"));
+            mShowCount.setText(Integer.toString(customersInStoreCounter));
+            mPrompt.setText("There are " + Integer.toString(availableEntries) + " entries available.");
+
+            if (customersInStoreCounter > mCap * 0.5) {
+                mPrompt.setTextColor(Color.parseColor("#F6BE00"));
+                mPrompt.setText("Hurry! Store is almost full!");
+            }
+        }
     }
 
 }
