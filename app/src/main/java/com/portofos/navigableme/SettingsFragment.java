@@ -26,7 +26,7 @@ public class SettingsFragment extends Fragment {
     private Button enterBtn;
     private Button leaveBtn;
 
-    // TODO: Import Random class
+    private String[] hexColors = {"#00FF00","#F6BE00","#FF0000"};
 
 
     @Override
@@ -83,9 +83,7 @@ public class SettingsFragment extends Fragment {
     }
 
     private void incrementClickLogia(){
-        // DESIRED FUNCTIONALITY. For each enter (incrementation of mCount) change
-        // to more yellow green mid green than yellow. when mCount reach mCap
-        // color of mPrompt should be red.
+
         customersInStoreCounter++;
 
         availableEntries = mCap - customersInStoreCounter;
@@ -95,12 +93,13 @@ public class SettingsFragment extends Fragment {
             }
 
             mPrompt.setText("Gallerian är full. Vänligen vänta.");
-            mPrompt.setTextColor(Color.parseColor("#FF0000"));
+            // set color to red
+            mPrompt.setTextColor(Color.parseColor(hexColors[2]));
             customersInStoreCounter = mCap;
         }
         else  {
 
-            mPrompt.setTextColor(Color.parseColor("#00FF00"));
+            mPrompt.setTextColor(Color.parseColor(hexColors[0]));
             mShowCount.setText(Integer.toString(customersInStoreCounter));
             mPrompt.setText("There are " + Integer.toString(availableEntries) + " entries available.");
 
@@ -108,7 +107,7 @@ public class SettingsFragment extends Fragment {
             // display prompt text as Dark Yellow (medium traffic)
             if (customersInStoreCounter > mCap * 0.5) {
                 double percentage = customersInStoreCounter / mCap;
-                mPrompt.setTextColor(Color.parseColor("#F6BE00"));
+                mPrompt.setTextColor(Color.parseColor(hexColors[1]));
                 mPrompt.setText("Hurry! Store is almost full!");
             }
         }

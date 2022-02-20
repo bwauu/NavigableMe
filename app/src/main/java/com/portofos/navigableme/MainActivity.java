@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,searchFragment).commit();
                         return true;
                     case R.id.map_icon:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,mapFragment).commit();
+                        getSupportFragmentManager().beginTransaction().add(R.id.container,mapFragment).commit();
                         return true;
                     case R.id.park_icon:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,parkFragment).commit();
