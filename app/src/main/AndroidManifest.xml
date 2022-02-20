@@ -16,7 +16,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/map_key"/> <!-- Build>Build Bundle(s)/API(s)>Build APK(s)-->
+            android:value="AIzaSyCE108NuuDq_M4GEM_GOwrtHKto8XOB2Xw"/> <!-- Build>Build Bundle(s)/API(s)>Build APK(s)-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
