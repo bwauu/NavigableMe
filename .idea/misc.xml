@@ -12,6 +12,8 @@
         <entry key="..\:/Users/beno/source/repos/NavigableMe/app/src/main/res/layout/fragment_search.xml" value="0.1" />
         <entry key="..\:/Users/beno/source/repos/NavigableMe/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
         <entry key="..\:/Users/beno/source/repos/NavigableMe/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.1" />
       </map>
     </option>
   </component>
