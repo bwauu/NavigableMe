@@ -130,7 +130,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                     LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                     googleMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,20));
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
                 }
                 return false;
             }
