@@ -18,6 +18,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.Random;
 
 
 public class ParkFragment extends Fragment {
@@ -25,6 +26,7 @@ public class ParkFragment extends Fragment {
     // instance variable
 
     private TextView textView;
+    private TextView textView1;
     private EditText editText;
     private Button applyTextButton, saveButton;
     private Switch switch1;
@@ -32,10 +34,13 @@ public class ParkFragment extends Fragment {
     private static final String SHARED_PREFS = "sharedPrefs";
     private static final String TEXT = "text";
     private static final String SWITCH1 = "switch1";
+    private static final String PARKING_SPOT_NR = "parkingSpotNr";
 
     private String text;
     private boolean switchOnOff;
 
+    private int parkingSpotNr;
+    private Random rand = new Random();
     // time instance variables
 
     private MediaPlayer mMediaPlayer = new MediaPlayer();
@@ -57,9 +62,9 @@ public class ParkFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_park, container, false);
 
         textView = view.findViewById(R.id.textview);
+        textView1 = view.findViewById(R.id.textView1);
         editText = view.findViewById(R.id.editTextTextEmailAddress);
         applyTextButton = view.findViewById(R.id.apply_text_button);
-        saveButton = view.findViewById(R.id.save_button);
         switch1 = view.findViewById(R.id.switch1);
 
         // Park Time Vars
@@ -90,6 +95,9 @@ public class ParkFragment extends Fragment {
         applyTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                parkingSpotNr  = rand.nextInt(50 - 1 + 1) + 1;
+                String stringedParkingSpotNr = String.valueOf(parkingSpotNr);
+                textView1.setText(editText.getText().toString() +" drive to parking spot: "+stringedParkingSpotNr);
                 textView.setText(editText.getText().toString());
                 saveData();
             }
@@ -103,7 +111,7 @@ public class ParkFragment extends Fragment {
 
     private void startTimer() {
         // Initialize MediaPlayer Object.
-        mMediaPlayer = new MediaPlayer();
+
         mMediaPlayer = MediaPlayer.create(getActivity(), R.raw.clap_reverb_wav);
         // Whenever startTimer is invoked, we will create a CountDownTimer object
         // and then immediately start the CountDownTimer by start()
@@ -170,6 +178,7 @@ public class ParkFragment extends Fragment {
 
         sharedPreferencesEditor.putString(TEXT, textView.getText().toString());
         sharedPreferencesEditor.putBoolean(SWITCH1, switch1.isChecked());
+        sharedPreferencesEditor.putInt(PARKING_SPOT_NR, parkingSpotNr);
 
         // apply save
         sharedPreferencesEditor.apply();
@@ -183,12 +192,13 @@ public class ParkFragment extends Fragment {
 
         // Empty string by default
         text = sharedPreferencesInterface.getString(TEXT,"");
+        parkingSpotNr = sharedPreferencesInterface.getInt(PARKING_SPOT_NR,0);
         // Off by default (false)
-        switchOnOff = sharedPreferencesInterface.getBoolean(SWITCH1, true);
+        switchOnOff = sharedPreferencesInterface.getBoolean(SWITCH1, false);
     }
 
     private void updateViews() {
-        textView.setText(text);
+        textView.setText("Car: "+text + "\n P-Spot: " + parkingSpotNr );
         switch1.setChecked(switchOnOff);
     }
 

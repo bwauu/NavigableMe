@@ -81,7 +81,6 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemClickL
         textUpdate.setText(selectedItem);
         // Create new fragment and transaction
         MapFragment mapFragment = new MapFragment();
-
         Bundle args = new Bundle();
         args.putString("selectedItemKey", selectedItem);
         mapFragment.setArguments(args);

@@ -34,6 +34,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private MapView mapView;
     SearchView searchView;
     private Bundle args;
+    private String usersSearchFragmentItem;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,7 +48,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         searchView = view.findViewById(R.id.searchView_mapfragment);
         args = getArguments();
-
+        if (args != null) {
+            try {
+                usersSearchFragmentItem  = (String) args.get("selectedItemKey");
+                Log.e("MapFragmentonCreateView", usersSearchFragmentItem);
+                searchView.setQuery(usersSearchFragmentItem,false);
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+                Log.e("MapFragmentonCreateView", "Caught" + e);
+            }
+        }
         // Return view
         return view;
     }
@@ -90,6 +101,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 String location = searchView.getQuery().toString();
+                Log.e("submit", location);
                 List<Address> addressList = null;
 
                 if(location != null || !location.equals("")){
