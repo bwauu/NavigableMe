@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap googleMap;
     private MapView mapView;
     SearchView searchView;
-
+    private Bundle args;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,35 +46,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 getChildFragmentManager().findFragmentById(R.id.google_map);
 
         searchView = view.findViewById(R.id.searchView_mapfragment);
+        args = getArguments();
 
-        // Async map
-        /*
-        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(@NonNull GoogleMap googleMap) {
-                // When map is loaded
-                googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                    @Override
-                    public void onMapClick(@NonNull LatLng latLng) {
-                        // When clicked on map
-                        // Intitialize marker options
-                        MarkerOptions markerOptions = new MarkerOptions();
-                        // Set position of marker
-                        markerOptions.position(latLng);
-                        // Set title of marker
-                        markerOptions.title(latLng.latitude + " : " + latLng.longitude);
-                        // Remove all marker
-                        googleMap.clear();
-                        // Animating to zoom the marker
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                latLng, 10
-                        ));
-                        // Add marker on map
-                        googleMap.addMarker(markerOptions);
-                    }
-                });
-            }
-        }); */
         // Return view
         return view;
     }
@@ -112,7 +86,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 googleMap.addMarker(markerOptions);
             }
         });
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {

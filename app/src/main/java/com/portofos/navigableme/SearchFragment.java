@@ -74,20 +74,23 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemClickL
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
         // get user's clicked item from ui list view
         String selectedItem = (String) adapterView.getItemAtPosition(i);
         // set text to clicked item
         textUpdate.setText(selectedItem);
         // Create new fragment and transaction
         MapFragment mapFragment = new MapFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        // Replace whatever is in Fragment "container" view with new fragment
-        transaction.replace(R.id.container, mapFragment);
-        // Add transaction to the back stack
-        transaction.addToBackStack(null);
 
-        // Commit the transaction
-        transaction.commit();
+        Bundle args = new Bundle();
+        args.putString("selectedItemKey", selectedItem);
+        mapFragment.setArguments(args);
+
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, mapFragment, "TAG_MAP_FRAGMENT")
+                .addToBackStack("TAG_MAP_FRAGMENT")
+                .commit();
 
     }
 
