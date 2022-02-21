@@ -104,6 +104,7 @@ public class ParkFragment extends Fragment {
     private void startTimer() {
         // Initialize MediaPlayer Object.
         mMediaPlayer = new MediaPlayer();
+        mMediaPlayer = MediaPlayer.create(getActivity(), R.raw.clap_reverb_wav);
         // Whenever startTimer is invoked, we will create a CountDownTimer object
         // and then immediately start the CountDownTimer by start()
         // first arg = length in milliseconds. second arg = how many milliseconds shall pass when
@@ -118,12 +119,9 @@ public class ParkFragment extends Fragment {
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
                 // play sound each tic
-                /*
-                mMediaPlayer = MediaPlayer.create(getActivity(), R.raw.clap_reverb_wav);
                 mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 mMediaPlayer.start();
 
-                 */
             }
 
             @Override
