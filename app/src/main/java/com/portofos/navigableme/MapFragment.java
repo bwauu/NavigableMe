@@ -41,7 +41,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         // Initialize view
         View view = inflater.inflate(R.layout.fragment_map, container, false);
-
+        // clear map
+        // set current position
         // Initialize map fragment
         SupportMapFragment supportMapFragment = (SupportMapFragment)
                 getChildFragmentManager().findFragmentById(R.id.google_map);
@@ -59,6 +60,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 Log.e("MapFragmentonCreateView", "Caught" + e);
             }
         }
+
+
         // Return view
         return view;
     }
@@ -80,6 +83,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(@NonNull LatLng latLng) {
+                googleMap.clear();
                 // When clicked on map
                 // Intitialize marker options
                 MarkerOptions markerOptions = new MarkerOptions();
@@ -88,7 +92,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 // Set title of marker
                 markerOptions.title(latLng.latitude + " : " + latLng.longitude);
                 // Remove all marker
-                googleMap.clear();
                 // Animating to zoom the marker
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                         latLng, 10
