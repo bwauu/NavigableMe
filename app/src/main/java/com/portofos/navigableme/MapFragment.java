@@ -19,6 +19,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapFragment extends Fragment {
 
     // TODO: Implement onQueryListner to search for stockholm for example and get pinpoint to stockholm
+    // IMPLEMENTATION:
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/home_icon"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item android:id="@+id/search_icon"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/ic_baseline_search_24"/>
 
     <item android:id="@+id/map_icon"
-        android:title="Map"
+        android:title="@string/map"
         android:icon="@drawable/ic_baseline_map_24"/>
 
     <item android:id="@+id/park_icon"
-        android:title="Park"
+        android:title="@string/park"
         android:icon="@drawable/ic_baseline_local_parking_24"/>
 
     <item android:id="@+id/settings_icon"
-        android:title="Settings"
+        android:title="@string/settings"
         android:icon="@drawable/ic_baseline_settings_24"/>
 </menu>
