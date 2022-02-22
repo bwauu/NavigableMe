@@ -32,20 +32,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class MapFragment extends Fragment /* x implements OnMapReadyCallback */ {
+public class MapFragment extends Fragment  {
 
-    // TODO: Implement onQueryListner to search for stockholm for example and get pinpoint to stockholm
-    // IMPLEMENTATION:
-    GoogleMap googleMap;
-    private MapView mapView;
-    SearchView searchView;
     private Bundle args;
     private String usersSearchFragmentItem;
 
     private String sSource, sDestination;
 
     private String currentMall = "Taby Centrum";
-
 
     EditText etSource, etDestination;
     Button btTrack;
@@ -58,14 +52,7 @@ public class MapFragment extends Fragment /* x implements OnMapReadyCallback */ 
         etSource = view.findViewById(R.id.et_source);
         etDestination = view.findViewById(R.id.et_destination);
         btTrack = view.findViewById(R.id.bt_track);
-        // clear map
-        // set current position
-        // Initialize map fragment
-        /*x SupportMapFragment supportMapFragment = (SupportMapFragment)
-                getChildFragmentManager().findFragmentById(R.id.google_map);
-         */
 
-        /* x searchView = view.findViewById(R.id.searchView_mapfragment); */
         args = getArguments();
         if (args != null) {
             try {
@@ -99,7 +86,7 @@ public class MapFragment extends Fragment /* x implements OnMapReadyCallback */ 
                     Toast.makeText(getActivity(), "Enter both location", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    // when both alue fill
+                    // when both values filled
                     // display tack
                     DisplayTrack(sSource,sDestination);
                 }
@@ -117,7 +104,8 @@ public class MapFragment extends Fragment /* x implements OnMapReadyCallback */ 
         try {
             // when google map is installed
             // intitialize uri
-            Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + sSource + "/"
+            Uri uri = Uri.parse("https://www.google.co.in/maps/dir/"
+                    + sSource + "/"
                     + sDestination);
             // init intent with action view
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -138,71 +126,5 @@ public class MapFragment extends Fragment /* x implements OnMapReadyCallback */ 
             startActivity(intent);
         }
     }
-    /*
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mapView = (MapView) view.findViewById(R.id.google_map);
-        mapView.onCreate(savedInstanceState);
-        mapView.onResume();
-        mapView.getMapAsync(this);
 
-    }
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        this.googleMap = googleMap;
-
-        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(@NonNull LatLng latLng) {
-                googleMap.clear();
-                // When clicked on map
-                // Intitialize marker options
-                MarkerOptions markerOptions = new MarkerOptions();
-                // Set position of marker
-                markerOptions.position(latLng);
-                // Set title of marker
-                markerOptions.title(latLng.latitude + " : " + latLng.longitude);
-                // Remove all marker
-                // Animating to zoom the marker
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                        latLng, 10
-                ));
-                // Add marker on map
-                googleMap.addMarker(markerOptions);
-            }
-        });
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                String location = searchView.getQuery().toString();
-                Log.e("submit", location);
-                List<Address> addressList = null;
-
-                if(location != null || !location.equals("")){
-                    Geocoder geocoder = new Geocoder(getActivity());
-                    try {
-                        addressList = geocoder.getFromLocationName(location,1);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Address address = addressList.get(0);
-
-                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                    googleMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
-                }
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
-            }
-        });
-        mapView.getMapAsync(this);
-
-    }
-    */
 }

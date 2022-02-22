@@ -28,7 +28,7 @@ public class ParkFragment extends Fragment {
     private TextView textView;
     private TextView textView1;
     private EditText editText;
-    private Button applyTextButton, saveButton;
+    private Button applyTextButton;
     private Switch switch1;
 
     private static final String SHARED_PREFS = "sharedPrefs";

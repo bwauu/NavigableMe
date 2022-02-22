@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 
 public class SearchFragment extends Fragment implements AdapterView.OnItemClickListener {
-    // TODO:Delete all unused components
+
     private TextView textUpdate;
     private SearchView searchView;
     private ListView listViewStores;
@@ -46,7 +46,7 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemClickL
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String[] storeItems = {"R.O.O.M.", "Lexington", "Spral", "ESPRIT", "Himla", "Tesla", "JoyShop", "Jackie", "Scorett", "Cubus", "Systembolaget", "Tavex", "Subway", "Smarteyes", "Picard", "Le Creuset"};
+        String[] storeItems = {"R.O.O.M.", "Lexington","Polisen" , "McDonalds","Spral", "ESPRIT", "Himla", "Tesla", "JoyShop", "Jackie", "Scorett", "Cubus", "Systembolaget", "Tavex", "Subway", "Smarteyes", "Picard", "Le Creuset"};
 
         listViewStores = (ListView) view.findViewById(R.id.store_list_items);
         adapter = new

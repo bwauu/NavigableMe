@@ -146,7 +146,7 @@ public class SettingsFragment extends Fragment {
         mShowCount = (TextView) view.findViewById(R.id.show_count);
         mPrompt = (TextView) view.findViewById(R.id.textview_prompter);
 
-        mCap = 10;
+        mCap = getRandomInteger(1, 100);
         customersInStoreCounter = getRandomInteger(getRandomInteger(1,mCap), mCap);
         mShowCount.setText(String.valueOf(customersInStoreCounter));
     }
